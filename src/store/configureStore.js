@@ -15,10 +15,12 @@ export default function (initialState = {}) {
 
   const store = createStore(rootReducer, initialState, middleWare);
 
-  if (module.hot && process.env.NODE_ENV === 'development') {
-    module.hot.accept('main/reducers', () =>
-      store.replaceReducer(require('main/reducers').default)
-    );
+  if (module.hot) {
+    module.hot.accept('../main/reducers', () => {
+      const nextReducer = require('../main/reducers').default;
+
+      store.replaceReducer(nextReducer);
+    });
   }
 
   return store;

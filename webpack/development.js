@@ -4,7 +4,11 @@ const webpack = require('webpack');
 const appDir = path.resolve(__dirname, '../src');
 
 module.exports = {
-  entry: ['webpack-hot-middleware/client', `${appDir}/client.js`],
+  entry: [
+    'react-hot-loader/patch',
+    'webpack-hot-middleware/client',
+    `${appDir}/client.js`
+  ],
 
   output: {
     path: appDir,
@@ -13,6 +17,7 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({'process.env': {
@@ -34,8 +39,8 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel',
-        include: appDir,
-        query: { presets: [ 'react-hmre' ] }
+        include: appDir
+        // query: { presets: [ 'react-hmre' ] }
       },
       {
         test: /\.scss$/,

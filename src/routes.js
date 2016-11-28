@@ -1,9 +1,14 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { Route } from 'react-router';
 import App from './main/components/App';
+import SamplePage from './main/components/SamplePage';
 
-export default (
-  <Route path='/'>
-    <IndexRoute component={App} />
-  </Route>
-);
+const routes = () => {
+  return (
+    <Route path='/' component={App}>
+      <Route path='/page' component={SamplePage} />
+    </Route>
+  );
+};
+
+export default routes;

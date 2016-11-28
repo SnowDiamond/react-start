@@ -16,7 +16,7 @@ class Header extends React.Component {
           <div className='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
             <ul className='nav navbar-nav'>
               <li>
-                <Link to='/'>Link</Link>
+                <Link to='/page'>Sample Page</Link>
               </li>
             </ul>
           </div>
